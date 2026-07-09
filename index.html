@@ -1,0 +1,404 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Windermere Labs</title>
+<link rel="icon" type="image/png" href="assets/logo/favicon.png" />
+<style>
+  :root {
+    --ground: #ffffff;
+    --ground-2: #f6f4fc;
+    --panel: #ffffff;
+    --ink: #17121f;
+    --ink-soft: #4b4658;
+    --ink-faint: #8b8698;
+    --line: #eae7f3;
+    --accent: #7c3aed;
+    --accent-soft: #9d6cf5;
+    --celeste: #8b5cf6;
+    --star: #cfc8ea;
+    --shadow: 0 24px 60px rgba(76, 40, 130, 0.09);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", "Consolas", monospace;
+  }
+  /* Committed to a single clean white + violet SaaS identity — dark maps to white too. */
+  :root[data-theme="light"], :root[data-theme="dark"] {
+    --ground: #ffffff; --ground-2: #f6f4fc; --panel: #ffffff;
+    --ink: #17121f; --ink-soft: #4b4658; --ink-faint: #8b8698;
+    --line: #eae7f3; --accent: #7c3aed; --accent-soft: #9d6cf5;
+    --celeste: #8b5cf6; --star: #cfc8ea; --shadow: 0 24px 60px rgba(76, 40, 130, 0.09);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--ground);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; }
+
+  /* Soft ambient blobs — the SaaS "gradient orb" look, echoing the app home screen. */
+  .bg-blobs { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+  .bg-blobs .blob { position: absolute; border-radius: 50%; filter: blur(70px); }
+  .blob-1 { width: 520px; height: 520px; top: -160px; right: -130px; background: var(--accent);      opacity: 0.16; }
+  .blob-2 { width: 440px; height: 440px; bottom: -150px; left: -130px; background: var(--celeste);    opacity: 0.15; }
+  .blob-3 { width: 320px; height: 320px; top: 42%; right: -110px;      background: var(--accent-soft); opacity: 0.10; }
+
+  .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+  .label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---- Hero ---- */
+  .hero { position: relative; padding: 56px 0 96px; overflow: hidden; }
+  #sky {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none;
+  }
+  .hero .wrap { position: relative; z-index: 1; }
+
+  .mark {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 56px;
+  }
+  .mark .logo-icon { width: 44px; height: 44px; flex: none; border-radius: 12px; }
+  .mark .name {
+    font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--ink-soft);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.3rem, 8.5vw, 6.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 28px;
+    max-width: none;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+
+  .lede {
+    font-size: clamp(1.05rem, 2vw, 1.32rem);
+    color: var(--ink-soft);
+    max-width: 54ch;
+    margin: 0 0 40px;
+  }
+
+  .coords {
+    display: flex; flex-wrap: wrap; gap: 8px 28px;
+    font-family: var(--mono); font-size: 0.75rem; color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+  .coords span { display: inline-flex; align-items: center; gap: 8px; }
+  .coords .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+
+  /* ---- Section frame ---- */
+  section { position: relative; z-index: 1; }
+  .section-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 20px; padding-bottom: 24px; margin-bottom: 44px;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-head h2 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(1.5rem, 3vw, 2rem); margin: 0; letter-spacing: -0.01em;
+  }
+
+  .products { padding: 40px 0 20px; }
+
+  /* ---- Product card ---- */
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+  }
+  .card__body { padding: 44px 44px 40px; }
+  .card__aside {
+    position: relative;
+    border-left: 1px solid var(--line);
+    padding: 0;
+    min-height: 100%;
+  }
+  .card__aside .cover { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .prod-top { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .glyph {
+    width: 58px; height: 58px; border-radius: 16px; flex: none; overflow: hidden;
+    display: grid; place-items: center; background: var(--ground-2);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--accent) 18%, transparent);
+  }
+  .glyph img { width: 100%; height: 100%; object-fit: cover; }
+  .prod-title { font-family: var(--serif); font-size: 1.7rem; font-weight: 500; margin: 0; }
+  .prod-link { color: inherit; text-decoration: none; transition: color .2s; }
+  .prod-link:hover { color: var(--accent); }
+  .explore {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 26px;
+    font-weight: 600; font-size: 0.95rem; color: var(--accent); text-decoration: none;
+  }
+  .explore span { transition: transform .2s; }
+  .explore:hover span { transform: translateX(4px); }
+  .prod-cat { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--celeste); margin: 0 0 14px; }
+
+  .card p { color: var(--ink-soft); margin: 0 0 26px; max-width: 46ch; }
+
+  .feat { list-style: none; margin: 0 0 30px; padding: 0; display: grid; gap: 13px; }
+  .feat li { display: flex; gap: 13px; align-items: flex-start; font-size: 0.96rem; }
+  .feat .star { color: var(--accent); flex: none; margin-top: 2px; }
+  .feat b { font-weight: 600; }
+  .feat span { color: var(--ink-faint); }
+
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
+    padding: 5px 11px; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--ink-soft);
+  }
+  .pill--live { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+  .pill--live::before { content: "●"; margin-right: 6px; font-size: 0.6em; vertical-align: middle; }
+  .pill--link { text-decoration: none; color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); transition: background .2s, color .2s; }
+  .pill--link:hover { background: var(--accent); color: var(--ground); }
+
+  /* ---- Upcoming ---- */
+  .soon {
+    margin-top: 22px;
+    border: 1px dashed var(--line);
+    border-radius: 20px;
+    padding: 30px 44px;
+    display: flex; align-items: center; gap: 20px;
+    color: var(--ink-faint);
+  }
+  .soon svg { width: 26px; height: 26px; flex: none; color: var(--celeste); }
+  .soon b { color: var(--ink-soft); font-weight: 600; }
+
+  /* ---- Footer ---- */
+  footer { border-top: 1px solid var(--line); margin-top: 96px; padding: 36px 0; text-align: center; }
+  .foot-row1 { margin: 0; color: var(--ink-faint); font-size: 0.92rem; }
+  .foot-brand { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
+  .foot-row2 { margin: 12px 0 0; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--ink-faint); }
+  .foot-contact { color: var(--accent); text-decoration: none; white-space: nowrap; border-bottom: 1px solid var(--line); transition: border-color .2s; }
+  .foot-contact:hover { border-color: var(--accent); }
+
+  a:focus-visible, .pill:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  /* ---- Large desktop ---- */
+  @media (min-width: 1440px) {
+    .wrap { max-width: 1200px; }
+    .card__body { padding: 52px 52px 48px; }
+  }
+  @media (min-width: 1800px) {
+    .wrap { max-width: 1320px; }
+  }
+
+  /* ---- Tablet ---- */
+  @media (max-width: 1024px) {
+    .wrap { padding: 0 24px; }
+    .hero { padding: 44px 0 76px; }
+    .mark { margin-bottom: 44px; }
+    .card__body { padding: 36px 34px 32px; }
+    .soon { padding: 26px 34px; }
+    footer { margin-top: 72px; }
+  }
+
+  /* ---- Tablet portrait: stack the card, image beneath the copy ---- */
+  @media (max-width: 900px) {
+    .card { grid-template-columns: 1fr; }
+    .card__aside { border-left: none; border-top: 1px solid var(--line); }
+    .card__aside .cover { height: 280px; }
+  }
+
+  /* ---- Phone ---- */
+  @media (max-width: 760px) {
+    .wrap { padding: 0 20px; }
+    .hero { padding: 36px 0 64px; }
+    .mark { margin-bottom: 36px; }
+    .mark .logo-icon { width: 38px; height: 38px; }
+    .mark .name { font-size: 0.72rem; letter-spacing: 0.2em; }
+
+    .blob-1 { width: 340px; height: 340px; top: -120px; right: -110px; }
+    .blob-2 { width: 300px; height: 300px; bottom: -110px; left: -110px; }
+    .blob-3 { display: none; }
+
+    .section-head { margin-bottom: 32px; padding-bottom: 20px; }
+    .products { padding: 24px 0 12px; }
+
+    .card { grid-template-columns: 1fr; }
+    .card__body { padding: 30px 22px 28px; }
+    /* Image stacks below the copy, so the separator moves to its top edge. */
+    .card__aside { border-left: none; border-top: 1px solid var(--line); }
+    .card__aside .cover { height: 220px; }
+    .card p, .lede { max-width: none; }
+
+    /* Wrapping pills and the explore CTA need a real tap target, not a 24px sliver. */
+    .pill { padding: 9px 14px; }
+    .explore { padding: 10px 0; }
+
+    .soon { padding: 24px 22px; align-items: flex-start; }
+    footer { margin-top: 64px; padding: 32px 0; }
+  }
+
+  /* ---- Small phone ---- */
+  @media (max-width: 420px) {
+    .section-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .coords { gap: 6px 18px; font-size: 0.7rem; }
+    .card__aside .cover { height: 180px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+
+<div class="bg-blobs" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<div class="hero">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="mark">
+      <img class="logo-icon" src="assets/logo/favicon.png" alt="Windermere Labs" />
+      <span class="name">Windermere&nbsp;Labs</span>
+    </div>
+
+    <h1>An independent studio crafting <em>useful</em> software for everyday life.</h1>
+    <p class="lede">We design and ship carefully built mobile apps - the kind we want on our own phones. Fewer products, more craft.</p>
+
+    <div class="coords">
+      <span><i class="dot"></i>Est. 2026</span>
+      <span><i class="dot"></i>Mobile · Desktop · Android</span>
+      <span><i class="dot"></i>1 product live</span>
+    </div>
+  </div>
+</div>
+
+<section class="products">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Products</h2>
+      <span class="label">Portfolio</span>
+    </div>
+
+    <article class="card">
+      <div class="card__body">
+        <p class="prod-cat">Astrology &amp; wellbeing</p>
+        <div class="prod-top">
+          <div class="glyph">
+            <img src="assets/images/jyotica-icon.png" alt="Jyotica logo" />
+          </div>
+          <h3 class="prod-title"><a class="prod-link" href="product/jyotica/">Jyotica</a></h3>
+        </div>
+
+        <p>Vedic astrology made personal. Jyotica reads your birth chart and turns centuries-old Jyotish tradition into clear, daily guidance — powered by AI, grounded in the classics.</p>
+
+        <ul class="feat">
+          <li><span class="star">✦</span><span><b>Daily horoscope &amp; predictions</b> — tailored to your chart, not a generic sun sign.</span></li>
+          <li><span class="star">✦</span><span><b>Compatibility &amp; relationships</b> — see how two charts align.</span></li>
+          <li><span class="star">✦</span><span><b>Muhurta</b> — find auspicious timings for what matters.</span></li>
+        </ul>
+
+        <div class="pills">
+          <span class="pill pill--live">Live</span>
+          <span class="pill">Android</span>
+          <a class="pill pill--link" href="PLAYSTORE_URL_HERE" target="_blank" rel="noopener">Play Store ↗</a>
+        </div>
+
+        <a class="explore" href="product/jyotica/">Explore Jyotica <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="card__aside">
+        <img class="cover" src="assets/images/horoscope.webp" alt="Jyotica — your everyday cosmic companion" />
+      </div>
+    </article>
+
+    <div class="soon">
+      <span><b>More on the way.</b> New products from the studio will land here.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="foot-row1"><span class="foot-brand">Windermere Labs</span> - Next-Gen application studio. Get in touch about our products or a collaboration.</p>
+    <p class="foot-row2">© 2026 Windermere Labs · All rights reserved · <a id="contact" class="foot-contact" href="#" data-u="windermerelabs" data-d="gmail" data-t="com">Email us ↗</a></p>
+  </div>
+</footer>
+
+<script>
+  // Assemble the contact address at runtime so crawlers scraping the static
+  // HTML never see a plain-text email or mailto: link.
+  (function () {
+    const c = document.getElementById("contact");
+    if (!c) return;
+    const addr = c.dataset.u + "@" + c.dataset.d + "." + c.dataset.t;
+    c.addEventListener("mouseenter", reveal, { once: true });
+    c.addEventListener("focus", reveal, { once: true });
+    function reveal() {
+      c.href = "mailto:" + addr;
+      c.textContent = addr;
+    }
+    c.addEventListener("click", function (e) {
+      if (c.getAttribute("href") === "#") { e.preventDefault(); reveal(); c.href = "mailto:" + addr; location.href = c.href; }
+    });
+  })();
+
+  (function () {
+    const canvas = document.getElementById("sky");
+    const ctx = canvas.getContext("2d");
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let w, h, stars, dpr;
+
+    function accent() {
+      return getComputedStyle(document.documentElement).getPropertyValue("--star").trim() || "#ccc";
+    }
+
+    function build() {
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      w = canvas.clientWidth; h = canvas.clientHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = Math.round((w * h) / 9000);
+      stars = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.3 + 0.3,
+        base: Math.random() * 0.5 + 0.2,
+        tw: Math.random() * Math.PI * 2,
+        sp: Math.random() * 0.02 + 0.005,
+      }));
+    }
+
+    function draw(t) {
+      ctx.clearRect(0, 0, w, h);
+      const col = accent();
+      for (const s of stars) {
+        const a = reduced ? s.base : s.base + Math.sin(t * s.sp + s.tw) * 0.25;
+        ctx.globalAlpha = Math.max(0.05, Math.min(0.85, a));
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = col;
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      if (!reduced) requestAnimationFrame(draw);
+    }
+
+    build();
+    draw(0);
+    if (reduced) draw(0);
+    let rt;
+    addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { build(); if (reduced) draw(0); }, 150); });
+  })();
+</script>

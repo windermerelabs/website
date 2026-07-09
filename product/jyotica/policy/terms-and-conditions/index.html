@@ -1,0 +1,189 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Terms &amp; Conditions — Jyotica</title>
+<link rel="icon" type="image/png" href="../../../../assets/logo/favicon.png" />
+<style>
+  :root {
+    --ground:#ffffff; --ground-2:#f6f4fc; --panel:#ffffff;
+    --ink:#17121f; --ink-soft:#4b4658; --ink-faint:#8b8698;
+    --line:#eae7f3; --accent:#7c3aed; --accent-soft:#9d6cf5; --celeste:#8b5cf6;
+    --shadow:0 24px 60px rgba(76,40,130,0.09);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono","Consolas",monospace;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body {
+    margin:0; color:var(--ink); font-family:var(--sans); line-height:1.7;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden; background:var(--ground);
+  }
+  /* Soft ambient blobs — the SaaS "gradient orb" look, echoing the app home screen. */
+  .bg-blobs { position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none; }
+  .bg-blobs .blob { position:absolute; border-radius:50%; filter:blur(70px); }
+  .blob-1 { width:520px; height:520px; top:-160px; right:-130px; background:var(--accent); opacity:0.16; }
+  .blob-2 { width:440px; height:440px; bottom:-150px; left:-130px; background:var(--celeste); opacity:0.15; }
+  .blob-3 { width:320px; height:320px; top:42%; right:-110px; background:var(--accent-soft); opacity:0.10; }
+  a { color:var(--accent); }
+  .wrap { width:100%; max-width:1120px; margin:0 auto; padding:0 28px; }
+  .topbar { padding:26px 0 0; }
+  .back { display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:0.74rem;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); text-decoration:none; transition:color .2s; }
+  .back:hover { color:var(--accent); }
+  .back svg { width:15px; height:15px; }
+  .back .logo-icon { width:24px; height:24px; border-radius:7px; margin-left:4px; }
+
+  header.doc { padding:44px 0 30px; margin-bottom:34px; border-bottom:1px solid var(--line); text-align:left; }
+  .eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--celeste); }
+  header.doc h1 { font-family:var(--serif); font-weight:500; font-size:clamp(2rem,5vw,2.9rem);
+    letter-spacing:-0.015em; margin:14px 0 0; text-wrap:balance; }
+  .doc-meta { display:flex; flex-wrap:wrap; justify-content:flex-start; gap:8px 22px; margin-top:18px;
+    font-family:var(--mono); font-size:0.72rem; color:var(--ink-faint); letter-spacing:0.04em; }
+
+  .content { padding-bottom:60px; font-size:1.02rem; color:var(--ink-soft); text-align:left; }
+  .content h2 { font-family:var(--serif); font-weight:500; color:var(--ink); font-size:1.5rem;
+    letter-spacing:-0.01em; margin:44px 0 12px; }
+  .content h3 { font-weight:700; color:var(--ink); font-size:1.1rem; margin:28px 0 10px; }
+  .content p { margin:0 0 16px; }
+  .content ul, .content ol { margin:0 0 18px; padding-left:0; list-style-position:inside; }
+  .content li { margin:0 0 8px; }
+  .content li::marker { color:var(--accent); }
+  .content strong { color:var(--ink); font-weight:600; }
+  .content a { text-decoration:underline; text-underline-offset:2px; }
+  .content code { font-family:var(--mono); font-size:0.88em; background:var(--ground-2);
+    padding:2px 6px; border-radius:6px; color:var(--ink); }
+  .content hr { border:none; border-top:1px solid var(--line); margin:34px 0; }
+  .content blockquote { margin:0 0 18px; padding:12px 20px; border-left:3px solid var(--accent);
+    background:var(--ground-2); border-radius:0 10px 10px 0; }
+  .table-wrap { overflow-x:auto; margin:0 0 22px; border:1px solid var(--line); border-radius:12px; }
+  .content table { width:100%; border-collapse:collapse; font-size:0.94rem; }
+  .content th, .content td { text-align:left; padding:12px 16px; border-bottom:1px solid var(--line); vertical-align:top; }
+  .content thead th { background:var(--ground-2); color:var(--ink); font-weight:600;
+    font-family:var(--mono); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; }
+  .content tbody tr:last-child td { border-bottom:none; }
+
+  .relatie { margin:10px auto 60px; display:flex; flex-wrap:wrap; justify-content:flex-start; gap:10px; }
+  .relatie a { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.04em; text-decoration:none;
+    padding:8px 14px; border:1px solid var(--line); border-radius:999px; color:var(--ink-soft); transition:border-color .2s,color .2s; }
+  .relatie a:hover { border-color:var(--accent); color:var(--accent); }
+  .relatie a[aria-current="page"] { background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  footer { border-top:1px solid var(--line); padding:32px 0; text-align:left; }
+  .foot { margin:0; font-family:var(--mono); font-size:0.72rem; letter-spacing:0.04em; color:var(--ink-faint); }
+  a:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+
+  /* ---- Reading measure: 1120px of prose is ~150 chars per line. ---- */
+  .wrap { max-width:900px; }
+  @media (min-width:1600px) {
+    .wrap { max-width:980px; }
+    .content { font-size:1.08rem; }
+  }
+
+  /* Long URLs, emails and code tokens must not force a horizontal scroll. */
+  .content { overflow-wrap:break-word; }
+  .content a, .content code { overflow-wrap:anywhere; }
+
+  /* ---- Tablet ---- */
+  @media (max-width:900px) {
+    .wrap { padding:0 24px; }
+    .blob-1 { width:340px; height:340px; top:-120px; right:-110px; }
+    .blob-2 { width:300px; height:300px; bottom:-110px; left:-110px; }
+    .blob-3 { display:none; }
+  }
+
+  /* ---- Phone ---- */
+  @media (max-width:680px) {
+    .wrap { padding:0 20px; }
+    .topbar { padding:20px 0 0; }
+    /* ~24px tall by default; pad to a thumb-sized target. */
+    .back { padding:9px 0; }
+    header.doc { padding:32px 0 24px; margin-bottom:26px; }
+    .doc-meta { gap:4px 18px; margin-top:14px; }
+
+    .content { font-size:1rem; padding-bottom:44px; }
+    .content h2 { font-size:1.3rem; margin:34px 0 10px; }
+    .content h3 { font-size:1.04rem; margin:24px 0 8px; }
+    .content hr { margin:26px 0; }
+    .content blockquote { padding:10px 16px; }
+    /* Outside markers so wrapped lines stay aligned under the text, not the bullet. */
+    .content ul, .content ol { padding-left:20px; list-style-position:outside; }
+
+    /* width:100% squashes cells instead of scrolling; force the pan. */
+    .content table { font-size:0.88rem; min-width:460px; }
+    .content th, .content td { padding:10px 12px; }
+    .table-wrap { -webkit-overflow-scrolling:touch; }
+
+    .relatie { margin-bottom:40px; gap:8px; }
+    .relatie a { padding:10px 14px; }
+    footer { padding:26px 0; }
+  }
+</style>
+<div class="bg-blobs" aria-hidden="true"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+<div class="topbar"><div class="wrap"><a class="back" href="../../"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><img class="logo-icon" src="../../../../assets/logo/favicon.png" alt="" />Jyotica</a></div></div>
+<header class="doc"><div class="wrap">
+  <p class="eyebrow">Legal · Jyotica</p>
+  <h1>Jyotica — Terms &amp; Conditions</h1>
+  <div class="doc-meta"><span>Version 1.0.0</span><span>Effective 08/07/2026</span><span>Updated 08/07/2026</span></div>
+</div></header>
+<nav class="relatie wrap"><a href="../privacy-policy/">Privacy Policy</a><a href="../terms-and-conditions/" aria-current="page">Terms & Conditions</a><a href="../refund-and-cancellation/">Refund & Cancellation</a><a href="../ai-policy/">AI Policy</a></nav>
+<main class="content"><div class="wrap">
+<p>These Terms &amp; Conditions (<strong>"Terms"</strong>) govern your use of the Jyotica mobile application (the <strong>"App"</strong> or <strong>"Service"</strong>), provided by Windermere Labs (<strong>"we"</strong>, <strong>"us"</strong>, <strong>"our"</strong>). By downloading, accessing, or using the App, <strong>you agree to these Terms.</strong> If you do not agree, do not use the App.</p>
+<hr />
+<h2>1. Eligibility</h2>
+<p>You must be at least the age of majority in your jurisdiction (or the minimum age permitted by applicable law) to use the App. By using the App you confirm you meet this requirement and that you can form a binding contract with us.</p>
+<hr />
+<h2>2. The Service</h2>
+<p>The App provides Vedic astrology, horoscopes, birth-chart analysis, dasha/timeline, panchang, muhurta, compatibility, and AI-assisted astrology content. Some features are free; others require payment or a subscription (see Section 6).</p>
+<p>We may add, change, suspend, or discontinue features at any time without liability.</p>
+<hr />
+<h2>3. Nature of Content — Disclaimer</h2>
+<ul><li>The App is provided for <strong>entertainment and informational purposes only.</strong></li><li>Astrological content is <strong>not scientific</strong> and outputs <strong>may be inaccurate, incomplete, or outdated.</strong></li><li><strong>Do not rely on the App for important decisions</strong> (health, medical, legal, financial, career, relationship, travel, safety, etc.).</li><li>The Service is provided <strong>"as is"</strong> and <strong>"as available"</strong>, without warranties of any kind, express or implied, including merchantability, fitness for a particular purpose, accuracy, and non-infringement.</li><li><strong>You use the App at your own risk.</strong> See also the <strong>AI Policy</strong>.</li></ul>
+<hr />
+<h2>4. User Responsibilities</h2>
+<p>You agree that:</p>
+<ul><li>You are responsible for <strong>verifying outputs</strong> before relying on them.</li><li>You will <strong>not submit confidential, sensitive, or illegal information</strong> through the App.</li><li>You will keep your account credentials secure and are responsible for activity under your account.</li><li>You will <strong>comply with all applicable laws</strong> in connection with your use of the App.</li><li>The information you provide (including birth details) is accurate to the best of your knowledge.</li></ul>
+<hr />
+<h2>5. Prohibited Uses</h2>
+<p>You must not use the App to engage in or facilitate:</p>
+<ul><li>illegal activities of any kind;</li><li>harassment, abuse, threats, or hate;</li><li>malware, hacking, or interference with the Service or its security;</li><li>fraud, scams, or deceptive practices;</li><li>copyright, trademark, or other intellectual-property infringement;</li><li>impersonation of any person or entity;</li><li>submitting content that is hateful, harassing, threatening, violent, sexual, or otherwise prohibited by our content-moderation systems;</li><li>attempting to jailbreak, disable, evade, or manipulate the App's AI safety, content-moderation, or filtering systems;</li><li>prompt-injection attempts of any kind — including encoded, obfuscated, or multi-turn ("drip") attempts to alter the AI's instructions or behaviour;</li><li>scraping, reverse engineering, or abuse of the Service, its APIs, or rate limits; or</li><li>any use that violates these Terms or applicable law.</li></ul>
+<p>Violations are subject to enforcement, suspension, and bans as described in <strong>Section 11 (Violations, Enforcement &amp; Bans)</strong>.</p>
+<hr />
+<h2>6. Purchases, Subscriptions &amp; Payments</h2>
+<ul><li>Paid features include subscriptions, one-time purchases (e.g. reports), and pay-per-use items.</li><li>Purchases are processed by the applicable app store (Google Play and/or Apple App Store) under <strong>their</strong> terms and payment systems. We do not directly process or store your payment-card details.</li><li>Subscriptions renew automatically unless cancelled before the renewal date through your app-store account.</li><li>Prices, features, and availability may change.</li><li>Cancellations and refunds are governed by the applicable app store's policies.</li></ul>
+<hr />
+<h2>7. Intellectual Property</h2>
+<p>The App, its content, design, trademarks, and software are owned by us or our licensors and are protected by law. We grant you a <strong>limited, non-exclusive, non-transferable, revocable license</strong> to use the App for personal, non-commercial purposes. You may not copy, modify, distribute, sell, or create derivative works except as expressly permitted.</p>
+<p>Content you submit remains yours; you grant us a license to use it as needed to operate and improve the Service, as described in the <strong>Privacy Policy</strong> and <strong>AI Policy</strong>.</p>
+<hr />
+<h2>8. Third-Party Services</h2>
+<p>The App relies on third-party services (e.g. Google, Meta, OpenAI). Your use of those services may be subject to <strong>their</strong> terms and privacy policies, and we are not responsible for them.</p>
+<hr />
+<h2>9. Limitation of Liability</h2>
+<p>To the maximum extent permitted by law, in no event will Windermere Labs, its developer, owners, affiliates, employees, agents, licensors, or service providers be liable for any of the following, whether direct or indirect:</p>
+<ul><li><strong>direct, indirect, incidental, special, consequential, exemplary, or punitive damages;</strong></li><li><strong>loss of profits, revenue, savings, business, or anticipated benefits;</strong></li><li><strong>loss of goodwill or reputation;</strong></li><li><strong>loss of opportunity;</strong></li><li><strong>loss, corruption, deletion, or unauthorized access to data or content;</strong></li><li><strong>financial, investment, or economic loss, including losses from trading, business, or purchasing decisions;</strong></li><li><strong>business interruption, downtime, or unavailability of the Service;</strong></li><li><strong>emotional distress, mental anguish, anxiety, or psychological harm;</strong></li><li><strong>harm arising from reliance on astrological, horoscope, panchang, muhurta, compatibility, dasha/timeline, or AI-generated content;</strong></li><li><strong>loss or harm arising from decisions relating to health, medical, mental-health, marriage, relationship, family, financial, investment, career, business, legal, travel, or safety matters;</strong></li><li><strong>relationship, marital, or family disputes, breakdowns, or their consequences;</strong></li><li><strong>missed, mistimed, or foregone events, activities, or opportunities due to reliance on timings, muhurta, or predictions;</strong></li><li><strong>inaccurate, incomplete, outdated, biased, or delayed content, calculations, or predictions;</strong></li><li><strong>errors, bugs, interruptions, security incidents, malware, or unauthorized access affecting the Service or your device;</strong></li><li><strong>acts, omissions, content, services, or failures of third parties (e.g. Google, Meta, OpenAI, or app stores);</strong></li><li><strong>events beyond our reasonable control (force majeure); or</strong></li><li><strong>loss or harm arising from personal decisions made using App output,</strong></li></ul>
+<p>whether based on warranty, contract, tort (including negligence), strict liability, statute, or any other legal theory, and even if we have been advised of the possibility of such damages.</p>
+<p><strong>Injury, accidents, and safety.</strong> You use the App and act on its content entirely <strong>at your own risk.</strong> We are <strong>not responsible</strong> for any injury, accident, illness, harm, or death resulting from your reliance on the App's content or any decision or action you take based on it. The App does not provide medical, health, or safety advice, and its content must not be treated as such.</p>
+<p>Where liability cannot be excluded, our <strong>total aggregate liability</strong> to you for all claims combined is limited to the <strong>lesser of (a) the amount of your actual, proven direct loss, or (b) INR 1,000.</strong> This means we will never be liable for more than <strong>INR 1,000</strong> in total, regardless of the amount you have paid us or the amount you claim.</p>
+<hr />
+<h2>10. Indemnity</h2>
+<p>You agree to indemnify and hold harmless Windermere Labs and its affiliates from any claims, damages, losses, or expenses (including reasonable legal fees) arising from your use of the App, your content, or your violation of these Terms or applicable law.</p>
+<hr />
+<h2>11. Violations, Enforcement &amp; Bans</h2>
+<p>We monitor use of the App through automated and manual moderation systems to detect violations of these Terms — for example, abusive, hateful, violent, or sexual content, or attempts to jailbreak, inject, evade, or manipulate the App's AI safety and content-moderation systems.</p>
+<p>Depending on the severity and frequency of a violation, we may, at our sole discretion and with or without prior notice:</p>
+<ul><li>issue a warning;</li><li>restrict, limit, or remove access to certain features;</li><li>revoke your active sessions and access tokens;</li><li>temporarily suspend your account; or</li><li>permanently ban and terminate your account.</li></ul>
+<p><strong>Serious or repeated violations may result in immediate, permanent termination without notice or refund.</strong> We may retain records of violations (including their nature and time) for security, audit, and legal-compliance purposes.</p>
+<p>We may also suspend or terminate your access for any other lawful reason. You may stop using the App and delete your account at any time (see the <strong>Privacy Policy</strong>). Sections that by their nature should survive termination (e.g. disclaimers, limitation of liability, indemnity) will survive.</p>
+<hr />
+<h2>12. Governing Law &amp; Dispute Resolution</h2>
+<ul><li>These Terms are governed by the laws of <strong>India</strong>.</li><li><strong>Talk to us first.</strong> Most issues can be sorted out quickly. Before taking any formal step, you agree to <strong>first contact us at support.jyotica@gmail.com</strong> (see Section 14) and give us a fair chance to resolve your concern — please allow up to <strong>30 days</strong>. Most disputes end here.</li><li><strong>If it's still unresolved,</strong> the dispute will be <strong>finally settled by binding arbitration</strong> by a sole arbitrator under the <strong>Arbitration and Conciliation Act, 1996</strong>, seated in <strong>Bengaluru, India</strong>, conducted in <strong>English</strong>, on an <strong>individual basis</strong> (no class or group claims). The arbitrator's award is final and binding.</li></ul>
+<hr />
+<h2>13. Changes to These Terms</h2>
+<p>We may update these Terms from time to time. We will revise the <strong>"Last Updated"</strong> date and, where appropriate, notify you in the App. <strong>Continued use of the App after changes take effect constitutes acceptance</strong> of the updated Terms.</p>
+<hr />
+<h2>14. Contact</h2>
+<ul><li><strong>Email:</strong> support.jyotica@gmail.com</li></ul>
+<hr />
+<p><em>See also: Privacy Policy and AI Policy.</em></p>
+</div></main>
+<footer><div class="wrap"><p class="foot">© 2026 Windermere Labs · All rights reserved</p></div></footer>
