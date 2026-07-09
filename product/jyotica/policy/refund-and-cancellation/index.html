@@ -1,0 +1,169 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Refund &amp; Cancellation — Jyotica</title>
+<link rel="icon" type="image/png" href="../../../../assets/logo/favicon.png" />
+<style>
+  :root {
+    --ground:#ffffff; --ground-2:#f6f4fc; --panel:#ffffff;
+    --ink:#17121f; --ink-soft:#4b4658; --ink-faint:#8b8698;
+    --line:#eae7f3; --accent:#7c3aed; --accent-soft:#9d6cf5; --celeste:#8b5cf6;
+    --shadow:0 24px 60px rgba(76,40,130,0.09);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono","Consolas",monospace;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body {
+    margin:0; color:var(--ink); font-family:var(--sans); line-height:1.7;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden; background:var(--ground);
+  }
+  /* Soft ambient blobs — the SaaS "gradient orb" look, echoing the app home screen. */
+  .bg-blobs { position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none; }
+  .bg-blobs .blob { position:absolute; border-radius:50%; filter:blur(70px); }
+  .blob-1 { width:520px; height:520px; top:-160px; right:-130px; background:var(--accent); opacity:0.16; }
+  .blob-2 { width:440px; height:440px; bottom:-150px; left:-130px; background:var(--celeste); opacity:0.15; }
+  .blob-3 { width:320px; height:320px; top:42%; right:-110px; background:var(--accent-soft); opacity:0.10; }
+  a { color:var(--accent); }
+  .wrap { width:100%; max-width:1120px; margin:0 auto; padding:0 28px; }
+  .topbar { padding:26px 0 0; }
+  .back { display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:0.74rem;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); text-decoration:none; transition:color .2s; }
+  .back:hover { color:var(--accent); }
+  .back svg { width:15px; height:15px; }
+  .back .logo-icon { width:24px; height:24px; border-radius:7px; margin-left:4px; }
+
+  header.doc { padding:44px 0 30px; margin-bottom:34px; border-bottom:1px solid var(--line); text-align:left; }
+  .eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--celeste); }
+  header.doc h1 { font-family:var(--serif); font-weight:500; font-size:clamp(2rem,5vw,2.9rem);
+    letter-spacing:-0.015em; margin:14px 0 0; text-wrap:balance; }
+  .doc-meta { display:flex; flex-wrap:wrap; justify-content:flex-start; gap:8px 22px; margin-top:18px;
+    font-family:var(--mono); font-size:0.72rem; color:var(--ink-faint); letter-spacing:0.04em; }
+
+  .content { padding-bottom:60px; font-size:1.02rem; color:var(--ink-soft); text-align:left; }
+  .content h2 { font-family:var(--serif); font-weight:500; color:var(--ink); font-size:1.5rem;
+    letter-spacing:-0.01em; margin:44px 0 12px; }
+  .content h3 { font-weight:700; color:var(--ink); font-size:1.1rem; margin:28px 0 10px; }
+  .content p { margin:0 0 16px; }
+  .content ul, .content ol { margin:0 0 18px; padding-left:0; list-style-position:inside; }
+  .content li { margin:0 0 8px; }
+  .content li::marker { color:var(--accent); }
+  .content strong { color:var(--ink); font-weight:600; }
+  .content a { text-decoration:underline; text-underline-offset:2px; }
+  .content code { font-family:var(--mono); font-size:0.88em; background:var(--ground-2);
+    padding:2px 6px; border-radius:6px; color:var(--ink); }
+  .content hr { border:none; border-top:1px solid var(--line); margin:34px 0; }
+  .content blockquote { margin:0 0 18px; padding:12px 20px; border-left:3px solid var(--accent);
+    background:var(--ground-2); border-radius:0 10px 10px 0; }
+  .table-wrap { overflow-x:auto; margin:0 0 22px; border:1px solid var(--line); border-radius:12px; }
+  .content table { width:100%; border-collapse:collapse; font-size:0.94rem; }
+  .content th, .content td { text-align:left; padding:12px 16px; border-bottom:1px solid var(--line); vertical-align:top; }
+  .content thead th { background:var(--ground-2); color:var(--ink); font-weight:600;
+    font-family:var(--mono); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; }
+  .content tbody tr:last-child td { border-bottom:none; }
+
+  .relatie { margin:10px auto 60px; display:flex; flex-wrap:wrap; justify-content:flex-start; gap:10px; }
+  .relatie a { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.04em; text-decoration:none;
+    padding:8px 14px; border:1px solid var(--line); border-radius:999px; color:var(--ink-soft); transition:border-color .2s,color .2s; }
+  .relatie a:hover { border-color:var(--accent); color:var(--accent); }
+  .relatie a[aria-current="page"] { background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  footer { border-top:1px solid var(--line); padding:32px 0; text-align:left; }
+  .foot { margin:0; font-family:var(--mono); font-size:0.72rem; letter-spacing:0.04em; color:var(--ink-faint); }
+  a:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+
+  /* ---- Reading measure: 1120px of prose is ~150 chars per line. ---- */
+  .wrap { max-width:900px; }
+  @media (min-width:1600px) {
+    .wrap { max-width:980px; }
+    .content { font-size:1.08rem; }
+  }
+
+  /* Long URLs, emails and code tokens must not force a horizontal scroll. */
+  .content { overflow-wrap:break-word; }
+  .content a, .content code { overflow-wrap:anywhere; }
+
+  /* ---- Tablet ---- */
+  @media (max-width:900px) {
+    .wrap { padding:0 24px; }
+    .blob-1 { width:340px; height:340px; top:-120px; right:-110px; }
+    .blob-2 { width:300px; height:300px; bottom:-110px; left:-110px; }
+    .blob-3 { display:none; }
+  }
+
+  /* ---- Phone ---- */
+  @media (max-width:680px) {
+    .wrap { padding:0 20px; }
+    .topbar { padding:20px 0 0; }
+    /* ~24px tall by default; pad to a thumb-sized target. */
+    .back { padding:9px 0; }
+    header.doc { padding:32px 0 24px; margin-bottom:26px; }
+    .doc-meta { gap:4px 18px; margin-top:14px; }
+
+    .content { font-size:1rem; padding-bottom:44px; }
+    .content h2 { font-size:1.3rem; margin:34px 0 10px; }
+    .content h3 { font-size:1.04rem; margin:24px 0 8px; }
+    .content hr { margin:26px 0; }
+    .content blockquote { padding:10px 16px; }
+    /* Outside markers so wrapped lines stay aligned under the text, not the bullet. */
+    .content ul, .content ol { padding-left:20px; list-style-position:outside; }
+
+    /* width:100% squashes cells instead of scrolling; force the pan. */
+    .content table { font-size:0.88rem; min-width:460px; }
+    .content th, .content td { padding:10px 12px; }
+    .table-wrap { -webkit-overflow-scrolling:touch; }
+
+    .relatie { margin-bottom:40px; gap:8px; }
+    .relatie a { padding:10px 14px; }
+    footer { padding:26px 0; }
+  }
+</style>
+<div class="bg-blobs" aria-hidden="true"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+<div class="topbar"><div class="wrap"><a class="back" href="../../"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><img class="logo-icon" src="../../../../assets/logo/favicon.png" alt="" />Jyotica</a></div></div>
+<header class="doc"><div class="wrap">
+  <p class="eyebrow">Legal · Jyotica</p>
+  <h1>Jyotica — Cancellation &amp; Refund Policy</h1>
+  <div class="doc-meta"><span>Version 1.0.0</span><span>Effective 08/07/2026</span><span>Updated 08/07/2026</span></div>
+</div></header>
+<nav class="relatie wrap"><a href="../privacy-policy/">Privacy Policy</a><a href="../terms-and-conditions/">Terms & Conditions</a><a href="../refund-and-cancellation/" aria-current="page">Refund & Cancellation</a><a href="../ai-policy/">AI Policy</a></nav>
+<main class="content"><div class="wrap">
+<p>This Cancellation &amp; Refund Policy explains how cancellations and refunds work for purchases made in the Jyotica mobile application (the <strong>"App"</strong>), provided by Windermere Labs (<strong>"we"</strong>, <strong>"us"</strong>, <strong>"our"</strong>). It forms part of, and should be read with, our <strong>Terms &amp; Conditions</strong>.</p>
+<hr />
+<h2>1. Types of Purchases</h2>
+<ul><li><strong>Subscriptions</strong> — recurring access to premium features (e.g. weekly/monthly/yearly plans).</li><li><strong>One-time purchases</strong> — e.g. detailed reports, premium unlocks.</li><li><strong>Pay-per-use items</strong> — e.g. individual AI queries, event alerts, or consumable tokens.</li></ul>
+<p>All purchases are <strong>digital goods/services delivered electronically.</strong></p>
+<hr />
+<h2>2. How Payments Are Processed</h2>
+<p>Purchases are made and processed through the applicable app store — <strong>Google Play</strong> and/or the <strong>Apple App Store</strong> — under their billing systems and terms. We do <strong>not</strong> process or store your payment-card details. Because of this, <strong>cancellations and refunds are primarily handled by the app store</strong>, subject to this Policy and your local consumer-protection rights.</p>
+<hr />
+<h2>3. Cancelling a Subscription</h2>
+<ul><li>You may cancel a subscription at any time through your <strong>app-store account</strong> (Google Play → Subscriptions, or Apple ID → Subscriptions).</li><li>Cancellation stops <strong>future</strong> renewals. You will <strong>retain access until the end of the current paid period.</strong></li><li><strong>Auto-renewal:</strong> subscriptions renew automatically unless cancelled at least 24 hours before the renewal date. To avoid being charged, cancel before the renewal date.</li></ul>
+<hr />
+<h2>4. Refunds</h2>
+<p>Because digital content is delivered immediately, <strong>all sales are generally final and non-refundable</strong>, except where:</p>
+<ul><li>a refund is <strong>required by applicable law</strong> or your local consumer-protection rights;</li><li>the <strong>app store's refund policy</strong> grants you a refund; or</li><li>we, at our discretion, approve a refund for the situations in Section 5.</li></ul>
+<hr />
+<h2>5. When We May Consider a Refund</h2>
+<p>We may, at our sole discretion, consider a refund where:</p>
+<ul><li>you were <strong>charged in error</strong> or <strong>charged more than once</strong> for the same item;</li><li>a paid feature was <strong>not delivered</strong> or was <strong>materially non-functional</strong> due to a fault on our side; or</li><li>a subscription <strong>renewed despite a timely cancellation</strong> caused by a verifiable technical fault.</li></ul>
+<hr />
+<h2>6. When Refunds Are Not Provided</h2>
+<p>Refunds are generally <strong>not</strong> provided where:</p>
+<ul><li>you simply <strong>changed your mind</strong>, no longer want the feature, or forgot to cancel before renewal;</li><li>you are <strong>dissatisfied with astrological/AI content</strong> (the App is for entertainment/informational purposes and outputs may be inaccurate — see the <strong>Disclaimer</strong> and <strong>AI Policy</strong>);</li><li>the item was <strong>already consumed/used</strong> (e.g. a report was generated, tokens were spent);</li><li>you <strong>violated</strong> the Terms &amp; Conditions; or</li><li>the request falls outside the app store's refund window.</li></ul>
+<hr />
+<h2>7. How to Request a Refund</h2>
+<ol><li><strong>App-store refunds:</strong> request directly through Google Play or the Apple App Store using their refund process (this is usually the fastest route).</li><li><strong>Discretionary refunds from us:</strong> within <strong>7 days</strong> of the transaction, email <strong>support.jyotica@gmail.com</strong> with your account email, order/transaction ID, purchase date, and reason. We aim to respond within <strong>5–7 business days</strong>. Requests made more than 7 days after the transaction may not be considered.</li></ol>
+<p>Approved refunds are issued to your <strong>original payment method</strong> and may take additional time to appear, depending on the app store and payment provider.</p>
+<hr />
+<h2>8. Price Changes</h2>
+<p>Prices and plans may change. For subscriptions, applicable changes apply from the next renewal and, where required, we (or the app store) will notify you in advance and give you the chance to cancel.</p>
+<hr />
+<h2>9. Changes to This Policy</h2>
+<p>We may update this Policy from time to time. We will revise the <strong>"Last Updated"</strong> date and, where appropriate, notify you in the App. <strong>Continued use of the App after changes take effect constitutes acceptance</strong> of the updated Policy.</p>
+<hr />
+<h2>10. Contact</h2>
+<ul><li><strong>Email:</strong> support.jyotica@gmail.com</li></ul>
+<hr />
+<p><em>See also: Terms &amp; Conditions, Privacy Policy, and AI Policy.</em></p>
+</div></main>
+<footer><div class="wrap"><p class="foot">© 2026 Windermere Labs · All rights reserved</p></div></footer>

@@ -1,0 +1,146 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Legal — Jyotica</title>
+<link rel="icon" type="image/png" href="../../../assets/logo/favicon.png" />
+<style>
+  :root {
+    --ground:#ffffff; --ground-2:#f6f4fc; --panel:#ffffff;
+    --ink:#17121f; --ink-soft:#4b4658; --ink-faint:#8b8698;
+    --line:#eae7f3; --accent:#7c3aed; --accent-soft:#9d6cf5; --celeste:#8b5cf6;
+    --shadow:0 24px 60px rgba(76,40,130,0.09);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono","Consolas",monospace;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body {
+    margin:0; color:var(--ink); font-family:var(--sans); line-height:1.7;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden; background:var(--ground);
+  }
+  /* Soft ambient blobs — the SaaS "gradient orb" look, echoing the app home screen. */
+  .bg-blobs { position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none; }
+  .bg-blobs .blob { position:absolute; border-radius:50%; filter:blur(70px); }
+  .blob-1 { width:520px; height:520px; top:-160px; right:-130px; background:var(--accent); opacity:0.16; }
+  .blob-2 { width:440px; height:440px; bottom:-150px; left:-130px; background:var(--celeste); opacity:0.15; }
+  .blob-3 { width:320px; height:320px; top:42%; right:-110px; background:var(--accent-soft); opacity:0.10; }
+  a { color:var(--accent); }
+  .wrap { width:100%; max-width:1120px; margin:0 auto; padding:0 28px; }
+  .topbar { padding:26px 0 0; }
+  .back { display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:0.74rem;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-faint); text-decoration:none; transition:color .2s; }
+  .back:hover { color:var(--accent); }
+  .back svg { width:15px; height:15px; }
+  .back .logo-icon { width:24px; height:24px; border-radius:7px; margin-left:4px; }
+
+  header.doc { padding:44px 0 30px; margin-bottom:34px; border-bottom:1px solid var(--line); text-align:left; }
+  .eyebrow { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--celeste); }
+  header.doc h1 { font-family:var(--serif); font-weight:500; font-size:clamp(2rem,5vw,2.9rem);
+    letter-spacing:-0.015em; margin:14px 0 0; text-wrap:balance; }
+  .doc-meta { display:flex; flex-wrap:wrap; justify-content:flex-start; gap:8px 22px; margin-top:18px;
+    font-family:var(--mono); font-size:0.72rem; color:var(--ink-faint); letter-spacing:0.04em; }
+
+  .content { padding-bottom:60px; font-size:1.02rem; color:var(--ink-soft); text-align:left; }
+  .content h2 { font-family:var(--serif); font-weight:500; color:var(--ink); font-size:1.5rem;
+    letter-spacing:-0.01em; margin:44px 0 12px; }
+  .content h3 { font-weight:700; color:var(--ink); font-size:1.1rem; margin:28px 0 10px; }
+  .content p { margin:0 0 16px; }
+  .content ul, .content ol { margin:0 0 18px; padding-left:0; list-style-position:inside; }
+  .content li { margin:0 0 8px; }
+  .content li::marker { color:var(--accent); }
+  .content strong { color:var(--ink); font-weight:600; }
+  .content a { text-decoration:underline; text-underline-offset:2px; }
+  .content code { font-family:var(--mono); font-size:0.88em; background:var(--ground-2);
+    padding:2px 6px; border-radius:6px; color:var(--ink); }
+  .content hr { border:none; border-top:1px solid var(--line); margin:34px 0; }
+  .content blockquote { margin:0 0 18px; padding:12px 20px; border-left:3px solid var(--accent);
+    background:var(--ground-2); border-radius:0 10px 10px 0; }
+  .table-wrap { overflow-x:auto; margin:0 0 22px; border:1px solid var(--line); border-radius:12px; }
+  .content table { width:100%; border-collapse:collapse; font-size:0.94rem; }
+  .content th, .content td { text-align:left; padding:12px 16px; border-bottom:1px solid var(--line); vertical-align:top; }
+  .content thead th { background:var(--ground-2); color:var(--ink); font-weight:600;
+    font-family:var(--mono); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; }
+  .content tbody tr:last-child td { border-bottom:none; }
+
+  .relatie { margin:10px auto 60px; display:flex; flex-wrap:wrap; justify-content:flex-start; gap:10px; }
+  .relatie a { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.04em; text-decoration:none;
+    padding:8px 14px; border:1px solid var(--line); border-radius:999px; color:var(--ink-soft); transition:border-color .2s,color .2s; }
+  .relatie a:hover { border-color:var(--accent); color:var(--accent); }
+  .relatie a[aria-current="page"] { background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  footer { border-top:1px solid var(--line); padding:32px 0; text-align:left; }
+  .foot { margin:0; font-family:var(--mono); font-size:0.72rem; letter-spacing:0.04em; color:var(--ink-faint); }
+  a:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+
+  /* ---- Reading measure: 1120px of prose is ~150 chars per line. ---- */
+  .wrap { max-width:900px; }
+  @media (min-width:1600px) {
+    .wrap { max-width:980px; }
+    .content { font-size:1.08rem; }
+  }
+
+  /* Long URLs, emails and code tokens must not force a horizontal scroll. */
+  .content { overflow-wrap:break-word; }
+  .content a, .content code { overflow-wrap:anywhere; }
+
+  /* ---- Tablet ---- */
+  @media (max-width:900px) {
+    .wrap { padding:0 24px; }
+    .blob-1 { width:340px; height:340px; top:-120px; right:-110px; }
+    .blob-2 { width:300px; height:300px; bottom:-110px; left:-110px; }
+    .blob-3 { display:none; }
+  }
+
+  /* ---- Phone ---- */
+  @media (max-width:680px) {
+    .wrap { padding:0 20px; }
+    .topbar { padding:20px 0 0; }
+    /* ~24px tall by default; pad to a thumb-sized target. */
+    .back { padding:9px 0; }
+    header.doc { padding:32px 0 24px; margin-bottom:26px; }
+    .doc-meta { gap:4px 18px; margin-top:14px; }
+
+    .content { font-size:1rem; padding-bottom:44px; }
+    .content h2 { font-size:1.3rem; margin:34px 0 10px; }
+    .content h3 { font-size:1.04rem; margin:24px 0 8px; }
+    .content hr { margin:26px 0; }
+    .content blockquote { padding:10px 16px; }
+    /* Outside markers so wrapped lines stay aligned under the text, not the bullet. */
+    .content ul, .content ol { padding-left:20px; list-style-position:outside; }
+
+    /* width:100% squashes cells instead of scrolling; force the pan. */
+    .content table { font-size:0.88rem; min-width:460px; }
+    .content th, .content td { padding:10px 12px; }
+    .table-wrap { -webkit-overflow-scrolling:touch; }
+
+    .relatie { margin-bottom:40px; gap:8px; }
+    .relatie a { padding:10px 14px; }
+    footer { padding:26px 0; }
+  }
+</style>
+<style>
+  .lgrid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:8px 0 70px; }
+  .lcard { display:flex; align-items:center; justify-content:space-between; gap:10px 16px;
+    flex-wrap:wrap; padding:24px 26px; border:1px solid var(--line); border-radius:16px; background:var(--panel);
+    box-shadow:var(--shadow); text-decoration:none; transition:transform .2s,border-color .2s; }
+  .lcard:hover { transform:translateY(-3px); border-color:color-mix(in srgb,var(--accent) 45%,var(--line)); }
+  .lcard .lt { font-family:var(--serif); font-size:1.25rem; color:var(--ink); }
+  .lcard .la { font-family:var(--mono); font-size:0.72rem; letter-spacing:0.08em; color:var(--accent); }
+  @media (max-width:680px) {
+    .lgrid { grid-template-columns:1fr; gap:12px; margin-bottom:48px; }
+    .lcard { padding:20px 20px; }
+    .lcard .lt { font-size:1.15rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .lcard:hover { transform:none; } }
+</style>
+<div class="bg-blobs" aria-hidden="true"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+<div class="topbar"><div class="wrap"><a class="back" href="../"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><img class="logo-icon" src="../../../assets/logo/favicon.png" alt="" />Jyotica</a></div></div>
+<header class="doc"><div class="wrap">
+  <p class="eyebrow">Legal · Jyotica</p>
+  <h1>Policies &amp; terms</h1>
+  <div class="doc-meta"><span>The legal documents that govern your use of Jyotica.</span></div>
+</div></header>
+<main class="content"><div class="wrap">
+  <div class="lgrid"><a class="lcard" href="privacy-policy/"><span class="lt">Privacy Policy</span><span class="la">Read →</span></a><a class="lcard" href="terms-and-conditions/"><span class="lt">Terms & Conditions</span><span class="la">Read →</span></a><a class="lcard" href="refund-and-cancellation/"><span class="lt">Refund & Cancellation</span><span class="la">Read →</span></a><a class="lcard" href="ai-policy/"><span class="lt">AI Policy</span><span class="la">Read →</span></a></div>
+</div></main>
+<footer><div class="wrap"><p class="foot">© 2026 Windermere Labs · All rights reserved</p></div></footer>
