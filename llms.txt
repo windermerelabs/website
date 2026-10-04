@@ -1,0 +1,37 @@
+# Windermere Labs
+
+> Windermere Labs is an independent studio making useful software for everyday life. Its main product is Jyotica, a Vedic astrology (Jyotish) app for Android.
+
+## Jyotica
+
+Jyotica (also written Jyotica AI or Jyotica.AI) is a free Vedic astrology app for Android, available on Google Play, in English, Hindi and Hinglish. It builds your Kundali from your date, time and place of birth and reads it in plain language.
+
+Features:
+- Kundali (birth chart): Rasi (D1) and Navamsa (D9) charts, planetary yogas, dashas, favourable periods, characteristics and remedies.
+- Daily horoscope (aaj ka rashifal) read from your own birth chart, not your sun sign.
+- Kundli milan: Ashtakoot guna milan out of 36 gunas for relationships and marriage.
+- Shubh muhurat: auspicious dates for vivah, griha pravesh, vehicle, property, namakaran, annaprashan, mundan, upanayana, new business, bhoomi puja and gold.
+- Aaj ka Panchang: tithi, nakshatra, yoga, karana, sunrise and sunset, Rahu Kaal and Abhijit Muhurta.
+- Vimshottari dasha (Mahadasha, Antardasha) and remedies: gemstone, mantra and dasha practices.
+- Hindu festival calendar, a vrat finder (Ekadashi, Pradosh, Purnima, Amavasya, Sankashti Chaturthi, Shivaratri and more), and a solar and lunar eclipse tracker.
+- AI astrologers: ten AI personas, two each for career, marriage, love, finance and health. They are AI, not human astrologers, and read your chart before answering.
+- Temple live darshan: live streams from 14 temples such as Somnath, Mahakaleshwar, Kashi Vishwanath, Jagannath Puri, Tirupati, Vaishno Devi, Shirdi, Ayodhya and ISKCON, with aarti times and reminders.
+- Sangrah: over 100 aartis, chalisas, stotrams and vrat kathas in Devanagari with optional Roman transliteration.
+- Mantra jaap counter with a digital rudraksha mala (108 beads per round by default).
+- Bhagavad Gita daily: one shloka a day with chapter, verse and word meanings.
+- Daily ritual suggestion and an energy check-in.
+- Daily streak and jaap streak, with reminders before aartis and eclipses.
+- Knowledge Hub: short lessons on Jyotish.
+
+Pricing: free to download. The daily horoscope, Panchang, Muhurta and birth chart are free; deeper readings and the AI astrologers are part of optional paid plans.
+
+Readings are for guidance and reflection, not a substitute for medical, legal or financial advice.
+
+## Links
+
+- [Jyotica product page](https://windermerelabs.io/product/jyotica/)
+- [Jyotica on Google Play](https://play.google.com/store/apps/details?id=com.windermerelabs.jyotica)
+- [Privacy Policy](https://windermerelabs.io/product/jyotica/policy/privacy-policy/)
+- [Terms & Conditions](https://windermerelabs.io/product/jyotica/policy/terms-and-conditions/)
+- [AI Policy](https://windermerelabs.io/product/jyotica/policy/ai-policy/)
+- [Refund & Cancellation](https://windermerelabs.io/product/jyotica/policy/refund-and-cancellation/)

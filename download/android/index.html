@@ -5,7 +5,7 @@
 <link rel="icon" type="image/png" href="/assets/logo/favicon.png" />
 <link rel="canonical" href="https://play.google.com/store/apps/details?id=com.windermerelabs.jyotica&amp;hl=en_IN" />
 <meta name="robots" content="noindex, follow" />
-<meta http-equiv="refresh" content="0; url=https://play.google.com/store/apps/details?id=com.windermerelabs.jyotica&amp;hl=en_IN" />
+<noscript><meta http-equiv="refresh" content="0; url=https://play.google.com/store/apps/details?id=com.windermerelabs.jyotica&amp;hl=en_IN&amp;referrer=utm_source%3Dwindermerelabs.io%26utm_medium%3Ddownload_page%26utm_campaign%3Djyotica_android" /></noscript>
 <style>
   :root {
     --ground: #ffffff;
@@ -75,10 +75,23 @@
   <p class="label">Redirecting</p>
   <h1>Taking you to Google Play</h1>
   <p>If nothing happens, tap the button below.</p>
-  <a class="btn" href="https://play.google.com/store/apps/details?id=com.windermerelabs.jyotica&amp;hl=en_IN" rel="noopener">Get it on Play Store ↗</a>
+  <a class="btn" id="play" href="https://play.google.com/store/apps/details?id=com.windermerelabs.jyotica&amp;hl=en_IN&amp;referrer=utm_source%3Dwindermerelabs.io%26utm_medium%3Ddownload_page%26utm_campaign%3Djyotica_android" rel="noopener">Get it on Play Store ↗</a>
   <a class="home" href="/product/jyotica/">← Back to Jyotica</a>
 </main>
 
 <script>
-  location.replace("https://play.google.com/store/apps/details?id=com.windermerelabs.jyotica&hl=en_IN");
+  // Google Play only records UTM tags passed inside its `referrer` parameter,
+  // so copy the UTM tags from this page's URL into it.
+  var q = new URLSearchParams(location.search), r = new URLSearchParams();
+  ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"].forEach(function (k) {
+    if (q.get(k)) r.set(k, q.get(k));
+  });
+  if (!r.has("utm_source")) {
+    r.set("utm_source", "windermerelabs.io");
+    r.set("utm_medium", "download_page");
+    r.set("utm_campaign", "jyotica_android");
+  }
+  var url = "https://play.google.com/store/apps/details?id=com.windermerelabs.jyotica&hl=en_IN&referrer=" + encodeURIComponent(r.toString());
+  document.getElementById("play").href = url;
+  location.replace(url);
 </script>

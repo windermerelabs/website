@@ -1,6 +1,49 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Windermere Labs</title>
+<meta name="description" content="Windermere Labs is an independent studio crafting useful software for everyday life — makers of Jyotica, the Vedic astrology app for Kundali, horoscope and Panchang." />
+<link rel="canonical" href="https://windermerelabs.io/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Windermere Labs" />
+<meta property="og:url" content="https://windermerelabs.io/" />
+<meta property="og:title" content="Windermere Labs" />
+<meta property="og:description" content="Windermere Labs is an independent studio crafting useful software for everyday life — makers of Jyotica, the Vedic astrology app for Kundali, horoscope and Panchang." />
+<meta property="og:image" content="https://windermerelabs.io/assets/images/og-jyotica.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<title>Windermere Labs — Makers of Jyotica, the Vedic Astrology App</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://windermerelabs.io/#org",
+      "name": "Windermere Labs",
+      "url": "https://windermerelabs.io/",
+      "logo": "https://windermerelabs.io/assets/logo/logo.png",
+      "email": "windermerelabs@gmail.com",
+      "brand": { "@type": "Brand", "name": "Jyotica" },
+      "owns": { "@id": "https://windermerelabs.io/product/jyotica/#app" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://windermerelabs.io/#website",
+      "url": "https://windermerelabs.io/",
+      "name": "Windermere Labs",
+      "publisher": { "@id": "https://windermerelabs.io/#org" }
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://windermerelabs.io/product/jyotica/#app",
+      "name": "Jyotica",
+      "url": "https://windermerelabs.io/product/jyotica/",
+      "operatingSystem": "Android",
+      "applicationCategory": "LifestyleApplication",
+      "sameAs": ["https://play.google.com/store/apps/details?id=com.windermerelabs.jyotica"],
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+    }
+  ]
+}
+</script>
 <link rel="icon" type="image/png" href="assets/logo/favicon.png" />
 <style>
   :root {
@@ -132,7 +175,23 @@
     padding: 0;
     min-height: 100%;
   }
-  .card__aside .cover { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card__aside .cover { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
+  /* A glimpse of the app laid over the cover: AI astrologers up top, feature tiles below. */
+  .card__aside::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to bottom, rgba(23, 18, 31, 0.28), transparent 26%, transparent 55%, rgba(23, 18, 31, 0.55)); }
+  .glimpse { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 18px; }
+  .g-astros, .g-tiles {
+    background: color-mix(in srgb, #fff 86%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 16px; box-shadow: 0 14px 34px rgba(23, 18, 31, 0.18);
+  }
+  .g-astros { align-self: flex-start; display: flex; align-items: center; gap: 12px; padding: 9px 14px 9px 10px; font-size: 0.85rem; color: var(--ink); }
+  .g-astros small { display: block; color: var(--ink-faint); font-size: 0.7rem; }
+  .g-faces { display: flex; }
+  .g-faces img { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; margin-left: -9px; }
+  .g-faces img:first-child { margin-left: 0; }
+  .g-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 8px; }
+  .g-tiles figure { margin: 0; }
+  .g-tiles img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 10px; display: block; }
+  .g-tiles figcaption { font-size: 0.68rem; color: var(--ink-soft); text-align: center; margin-top: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
   .prod-top { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
   .glyph {
@@ -216,7 +275,7 @@
   @media (max-width: 900px) {
     .card { grid-template-columns: 1fr; }
     .card__aside { border-left: none; border-top: 1px solid var(--line); }
-    .card__aside .cover { height: 280px; }
+    .card__aside .cover { height: 420px; }
   }
 
   /* ---- Phone ---- */
@@ -238,7 +297,8 @@
     .card__body { padding: 30px 22px 28px; }
     /* Image stacks below the copy, so the separator moves to its top edge. */
     .card__aside { border-left: none; border-top: 1px solid var(--line); }
-    .card__aside .cover { height: 220px; }
+    .card__aside .cover { height: 380px; }
+    .glimpse { padding: 12px; }
     .card p, .lede { max-width: none; }
 
     /* Wrapping pills and the explore CTA need a real tap target, not a 24px sliver. */
@@ -253,7 +313,8 @@
   @media (max-width: 420px) {
     .section-head { flex-direction: column; align-items: flex-start; gap: 6px; }
     .coords { gap: 6px 18px; font-size: 0.7rem; }
-    .card__aside .cover { height: 180px; }
+    .card__aside .cover { height: 360px; }
+    .g-astros small { display: none; }
   }
 
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -301,25 +362,40 @@
           <h3 class="prod-title"><a class="prod-link" href="product/jyotica/">Jyotica</a></h3>
         </div>
 
-        <p>Vedic astrology made personal. Jyotica reads your birth chart and turns centuries-old Jyotish tradition into clear, daily guidance — powered by AI, grounded in the classics.</p>
+        <p>Vedic astrology made personal. Jyotica builds your Kundali and turns centuries-old Jyotish tradition into clear, daily guidance — with AI astrologers, Panchang and live temple darshan, in English, हिंदी and Hinglish.</p>
 
         <ul class="feat">
-          <li><span class="star">✦</span><span><b>Daily horoscope &amp; predictions</b> — tailored to your chart, not a generic sun sign.</span></li>
-          <li><span class="star">✦</span><span><b>Compatibility &amp; relationships</b> — see how two charts align.</span></li>
-          <li><span class="star">✦</span><span><b>Muhurta</b> — find auspicious timings for what matters.</span></li>
+          <li><span class="star">✦</span><span><b>Kundali &amp; daily horoscope</b> — read from your own birth chart, not a generic sun sign.</span></li>
+          <li><span class="star">✦</span><span><b>AI astrologers</b> — ten personas for career, marriage, love, finance and health.</span></li>
+          <li><span class="star">✦</span><span><b>Kundali matching &amp; Muhurta</b> — compatibility and auspicious timings.</span></li>
+          <li><span class="star">✦</span><span><b>Panchang, festivals &amp; vrat finder</b> — every tithi, Ekadashi and festival.</span></li>
+          <li><span class="star">✦</span><span><b>Live darshan, aarti &amp; jaap</b> — 14 temples, 100+ devotional texts and a mala counter.</span></li>
         </ul>
 
         <div class="pills">
           <span class="pill pill--live">Live</span>
           <span class="pill">Android</span>
-          <a class="pill pill--link" href="https://play.google.com/store/apps/details?id=com.windermerelabs.jyotica&amp;hl=en_IN" target="_blank" rel="noopener">Play Store ↗</a>
+          <span class="pill">Free</span>
+          <a class="pill pill--link" href="https://play.google.com/store/apps/details?id=com.windermerelabs.jyotica&amp;hl=en_IN&amp;referrer=utm_source%3Dwindermerelabs.io%26utm_medium%3Dwebsite%26utm_campaign%3Djyotica_android%26utm_content%3Dhome_card" target="_blank" rel="noopener">Play Store ↗</a>
         </div>
 
         <a class="explore" href="product/jyotica/">Explore Jyotica <span aria-hidden="true">→</span></a>
       </div>
 
       <div class="card__aside">
-        <img class="cover" src="assets/images/horoscope.webp" alt="Jyotica — your everyday cosmic companion" />
+        <img class="cover" src="assets/images/app/hero.webp" alt="Jyotica — your everyday cosmic companion" loading="lazy" />
+        <div class="glimpse">
+          <div class="g-astros">
+            <span class="g-faces"><img src="assets/images/app/astrologers/meera-face.webp" alt="" width="30" height="30" loading="lazy" /><img src="assets/images/app/astrologers/devika-face.webp" alt="" width="30" height="30" loading="lazy" /><img src="assets/images/app/astrologers/arjun-face.webp" alt="" width="30" height="30" loading="lazy" /><img src="assets/images/app/astrologers/lakshmi-face.webp" alt="" width="30" height="30" loading="lazy" /><img src="assets/images/app/astrologers/vihaan-face.webp" alt="" width="30" height="30" loading="lazy" /></span>
+            <span><b>10 AI astrologers</b><small>Career · Marriage · Love · Finance · Health</small></span>
+          </div>
+          <div class="g-tiles">
+            <figure><img src="assets/images/app/kundali.webp" alt="" width="1000" height="500" loading="lazy" /><figcaption>Kundali</figcaption></figure>
+            <figure><img src="assets/images/app/panchang.webp" alt="" width="1000" height="500" loading="lazy" /><figcaption>Panchang</figcaption></figure>
+            <figure><img src="assets/images/app/muhurta.webp" alt="" width="1000" height="500" loading="lazy" /><figcaption>Live darshan</figcaption></figure>
+            <figure><img src="assets/images/app/gita.webp" alt="" width="1000" height="500" loading="lazy" /><figcaption>Gita daily</figcaption></figure>
+          </div>
+        </div>
       </div>
     </article>
 
